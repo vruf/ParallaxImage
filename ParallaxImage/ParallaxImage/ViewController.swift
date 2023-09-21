@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "image.png")
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
