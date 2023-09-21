@@ -1,16 +1,9 @@
-//
-//  ViewController.swift
-//  ParallaxImage
-//
-//  Created by Vadim Rufov on 19.9.2023.
-//
-
 import UIKit
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
     private let imageHeight = 270.0
-    
+
     private lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.contentInsetAdjustmentBehavior = .never
@@ -19,7 +12,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "image.png")
+        view.image = UIImage(named: "334556")
         view.contentMode = .scaleAspectFill
         return view
     }()
@@ -30,6 +23,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        scrollView.verticalScrollIndicatorInsets.top = imageViewHeightAnchor.constant
+
     }
     
     private func setupViews() {
@@ -56,14 +51,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         ])
         
         scrollView.delegate = self
+        scrollView.verticalScrollIndicatorInsets.top = imageViewHeightAnchor.constant
+        print(scrollView.verticalScrollIndicatorInsets.top)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffsetheight = scrollView.contentOffset.y
+        let contentOffY = scrollView.contentOffset.y
         
-        if contentOffsetheight < 0 {
-            imageViewTopAnchor.constant = contentOffsetheight
-            imageViewHeightAnchor.constant = imageHeight - contentOffsetheight
+        if contentOffY < 0 {
+            imageViewTopAnchor.constant = contentOffY
+            imageViewHeightAnchor.constant = imageHeight - contentOffY
         }
         
         scrollView.verticalScrollIndicatorInsets.top = imageViewHeightAnchor.constant - view.safeAreaInsets.top
