@@ -66,7 +66,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             imageViewHeightAnchor.constant = imageHeight - contentOffsetheight
         }
         
-        scrollView.verticalScrollIndicatorInsets.top = imageViewHeightAnchor.constant
+        scrollView.verticalScrollIndicatorInsets.top = imageViewHeightAnchor.constant - view.safeAreaInsets.top
     }
     
 }
